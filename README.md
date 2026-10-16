@@ -81,8 +81,6 @@ Ponyhead is **opt-in**. It should never turn ordinary software development into 
 /ponyhead lite Make this snippet more beginner-like. Keep it short.
 
 /ponyhead full Make this toy example gloriously repetitive. Up to 100 lines.
-
-/ponyhead off
 ```
 
 Invocation syntax depends on your agent. In Claude Code the skill never activates on its own; type `/ponyhead`. Other agents may accept a plain request such as **"Use Ponyhead for this example."**
@@ -91,7 +89,6 @@ Invocation syntax depends on your agent. In Claude Code the skill never activate
 | --- | --- |
 | `lite` (default) | One compact, intentionally clumsy example, typically 8–30 lines. |
 | `full` | More enthusiastic repetition, capped at approximately 100 illustrative lines. |
-| `off` | No Ponyhead transformation. |
 
 The mode limits are behavioral instructions, not hard-enforced execution limits. Generated output varies by model and task.
 
