@@ -135,19 +135,6 @@ uv run scripts/build_demo.py           # regenerate the demo GIF
 
 *All figures here are jokes, not empirical performance results.*
 
-## Mascot
-
-Hair is gathered **forward** from the back and crown, tied high near the forehead, and falls down over the face. There is **no tie at the back**. Keep the slightly crooked oval glasses, *visible dark pupils*, small mouth, soft cheeks, and deliberately scruffy pen strokes. The result should be endearingly hapless, not frightening or overly polished.
-
-<details>
-<summary>View approved B-design character reference</summary>
-
-![Ponyhead character reference, including front, side, back, and small facial expressions](assets/ponyhead-character-sheet.png)
-
-</details>
-
-More detailed visual rules live in [`CHARACTER.md`](CHARACTER.md).
-
 ## Credits
 
 An independent parody inspired by [Ponytail](https://github.com/DietrichGebert/ponytail) and its fewer-lines philosophy. **Not affiliated with, sponsored by, or endorsed by the Ponytail maintainers.** Ponyhead uses separately created mascot artwork.
