@@ -57,7 +57,7 @@ Same output **for this fixed example**. More lines. More effort. Absolutely no s
 
 Ponyhead uses the [Agent Skills](https://agentskills.io/specification) `SKILL.md` format. It's just instructions — no runtime dependencies, API keys, or MCP server required.
 
-Once this repository is published at `NaNIsaac/ponyhead`, install it with the Skills CLI:
+Install it with the Skills CLI:
 
 ```bash
 npx skills add NaNIsaac/ponyhead --skill ponyhead
@@ -70,8 +70,6 @@ npx skills add NaNIsaac/ponyhead --skill ponyhead -a claude-code
 ```
 
 **Manual install:** Copy [`skills/ponyhead/SKILL.md`](skills/ponyhead/SKILL.md) to `.claude/skills/ponyhead/SKILL.md` in your Claude Code project, or to the corresponding skills directory in another compatible agent.
-
-> These GitHub installation commands will work **after** `NaNIsaac/ponyhead` is published. Until then, use this source folder as a local skill.
 
 ## Try it
 
