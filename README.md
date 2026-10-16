@@ -11,7 +11,7 @@
 <p align="center"><sub>Why use a loop when you can copy and paste?</sub></p>
 
 <p align="center">
-  <img src="assets/ponyhead-demo.gif" alt="Animated terminal comparison: a two-line Python loop becomes five explicit print statements" width="760" />
+  <img src="assets/ponyhead-demo.gif" alt="Animated terminal comparison: a loop becomes five print statements, an even check reads the last digit, a positive check runs twice, and 3 * 4 becomes 4 + 4 + 4" width="760" />
 </p>
 
 ---
@@ -42,6 +42,22 @@ print(5)
 ```
 
 Same output **for this fixed example**. More lines. More effort. Absolutely no shame. (For a dynamic range, this is *not* an equivalent general solution.)
+
+### Not just loops
+
+| Normal | Ponyhead |
+| --- | --- |
+| `n % 2 == 0` | `str(n)[-1] in "02468"` *(even numbers end in an even digit, obviously)* |
+| `return x > 0` | `if x > 0:` / `if (x > 0) == True: return True` / `else: return False` *(checked twice)* |
+| `3 * 4` | `4 + 4 + 4` |
+| `["Mon", ..., "Sun"][i]` | `if i == 0: return "Mon"` / `elif i == 1: ...` ×7 |
+| `a, b = b, a` | `temp = a` / `temp2 = b` / `a = temp2` / `b = temp` |
+| `max(a, b)` | `if a > b` / `elif b > a` / `elif a == b` |
+| `abs(x)` | `if x < 0: return x * -1`, with zero handled separately |
+| `not items` | `if len(items) == 0: return True` / `if len(items) != 0: return False` |
+| `s[::-1]` | prepend one character at a time |
+
+Full code in [`examples/cases.py`](examples/cases.py); each pair is checked for equal results in [`tests/test_examples.py`](tests/test_examples.py).
 
 ## Carefully engineered inefficiency
 

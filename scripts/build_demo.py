@@ -41,16 +41,32 @@ def make_mascot() -> Image.Image:
 
 
 def make_frames(avatar: Image.Image) -> list[Image.Image]:
+    scenes=[
+        (["for i in range(1, 6):", "    print(i)"],
+         ["print(1)","print(2)","print(3)","print(4)","print(5)"],
+         "Same output. More lines. Zero shame."),
+        (["n % 2 == 0"], ['str(n)[-1] in "02468"'],
+         "Even numbers end in an even digit. Obviously."),
+        (["return x > 0"],
+         ["if x > 0:","    if (x > 0) == True:","        return True","else:","    return False"],
+         "Checked twice, just to be sure."),
+        (["3 * 4"], ["4 + 4 + 4"], "Multiplication is just patient addition."),
+    ]
+    frames=[]
+    for left, right, footer in scenes:
+        stages=list(range(len(right)))+[len(right)]*4
+        durations=[420]*len(right)+[450,500,500,850]
+        frames+=draw_scene(avatar,left,right,footer,stages,durations)
+    return frames
+
+
+def draw_scene(avatar, left, right, footer, stages, durations):
     W,H=990,390
     dark=(17,19,24); panel=(25,29,37); panel_border=(65,70,83)
     warm=(236,151,138); white=(240,241,244); muted=(155,164,178)
     line_color=(137,205,177); cyan=(115,199,225)
     line_font=font(24); title_font=font(22,True); small=font(18); note=font(20,True)
-    left=["for i in range(1, 6):", "    print(i)"]
-    right=["print(1)","print(2)","print(3)","print(4)","print(5)"]
     frames=[]
-    stages=[0,1,2,3,4,5,5,5,5]
-    durations=[400,420,450,430,430,450,500,500,850]
     for tick, stage in enumerate(stages):
         img=Image.new("RGB",(W,H),dark);d=ImageDraw.Draw(img)
         d.rounded_rectangle((18,18,972,308),radius=18,fill=panel,outline=panel_border,width=2)
@@ -69,13 +85,13 @@ def make_frames(avatar: Image.Image) -> list[Image.Image]:
             yy=154+i*31
             d.text((530,yy),f"{i+1:>2} ",font=small,fill=muted)
             d.text((582,yy),s,font=line_font,fill=line_color)
-        if stage<5:
+        if stage<len(right):
             yy=154+stage*31
             if tick%2==0:
                 d.rounded_rectangle((583,yy+2,594,yy+25),radius=2,fill=warm)
         else:
-            d.text((748,258),"✓ it works",font=small,fill=warm)
-        d.text((45,331),"Same output. More lines. Zero shame.",font=note,fill=white)
+            d.text((800,108),"✓ it works",font=small,fill=warm)
+        d.text((45,331),footer,font=note,fill=white)
         d.text((740,335),"NO LOOPS CLUB",font=small,fill=warm)
         # Mini avatar at right-top: delightful, but not distracting.
         mascot=avatar.copy();mascot.thumbnail((46,46),Image.Resampling.LANCZOS)
@@ -88,10 +104,11 @@ def make_frames(avatar: Image.Image) -> list[Image.Image]:
 def main():
     avatar=make_mascot()
     frames=make_frames(avatar)
+    loop_scene_end=8  # last frame of the first (loop) scene
     # GIF source is deterministic, and loops rather than uploading a video.
     frames[0].save(ASSETS/"ponyhead-demo.gif",format="GIF",save_all=True,append_images=frames[1:],duration=[x.info['duration'] for x in frames],loop=0,optimize=True)
     # Also provide a still for contexts that don't auto-play GIFs.
-    frames[-1].save(ASSETS/"ponyhead-demo-still.png",optimize=True)
+    frames[loop_scene_end].save(ASSETS/"ponyhead-demo-still.png",optimize=True)
     print("Created", ASSETS/"ponyhead-demo.gif")
 
 if __name__ == "__main__":
