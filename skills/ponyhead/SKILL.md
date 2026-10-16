@@ -1,7 +1,8 @@
 ---
 name: ponyhead
-description: 'Opt-in parody coding skill. Only use when the user explicitly says Ponyhead, invokes /ponyhead, or asks for deliberately beginner-like, copy-paste-heavy code. Make small examples amusingly verbose while preserving correctness.'
+description: 'Opt-in parody coding skill. Only use when the user explicitly says Ponyhead or invokes /ponyhead. Make small examples amusingly verbose while preserving correctness.'
 license: MIT
+disable-model-invocation: true
 metadata:
   author: NaNIsaac
   version: "1.0.0"

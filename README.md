@@ -85,7 +85,7 @@ Ponyhead is **opt-in**. It should never turn ordinary software development into 
 /ponyhead off
 ```
 
-Invocation syntax depends on your agent. You can also simply say: **"Use Ponyhead for this example."**
+Invocation syntax depends on your agent. In Claude Code the skill never activates on its own; type `/ponyhead`. Other agents may accept a plain request such as **"Use Ponyhead for this example."**
 
 | Mode | Behavior |
 | --- | --- |
