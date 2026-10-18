@@ -41,7 +41,7 @@ print(4)
 print(5)
 ```
 
-Same output **for this fixed example**. More lines. More effort. Absolutely no shame. (For a dynamic range, this is *not* an equivalent general solution.)
+Same output **for this fixed example**. More lines. More effort. Absolutely no shame.
 
 ### Not just loops
 
@@ -71,7 +71,7 @@ Full code in [`examples/cases.py`](examples/cases.py); each pair is checked for 
 
 ## Install
 
-Ponyhead uses the [Agent Skills](https://agentskills.io/specification) `SKILL.md` format. It's just instructions — no runtime dependencies, API keys, or MCP server required.
+Ponyhead uses the [Agent Skills](https://agentskills.io/specification) `SKILL.md` format.
 
 Install it with the Skills CLI:
 
@@ -89,8 +89,6 @@ npx skills add NaNIsaac/ponyhead --skill ponyhead -a claude-code
 
 ## Try it
 
-Ponyhead is **opt-in**. It should never turn ordinary software development into a copy-paste festival without being asked.
-
 ```text
 /ponyhead Rewrite this fixed five-item example in Ponyhead style.
 
@@ -99,20 +97,18 @@ Ponyhead is **opt-in**. It should never turn ordinary software development into 
 /ponyhead full Make this toy example gloriously repetitive. Up to 100 lines.
 ```
 
-Invocation syntax depends on your agent. In Claude Code the skill never activates on its own; type `/ponyhead`. Other agents may accept a plain request such as **"Use Ponyhead for this example."**
+Ponyhead is **opt-in**. In Claude Code the skill never activates on its own; type `/ponyhead`. Other agents may accept a plain request such as **"Use Ponyhead for this example."**
 
 | Mode | Behavior |
 | --- | --- |
 | `lite` (default) | One compact, intentionally clumsy example, typically 8–30 lines. |
 | `full` | More enthusiastic repetition, capped at approximately 100 illustrative lines. |
 
-The mode limits are behavioral instructions, not hard-enforced execution limits. Generated output varies by model and task.
-
 ## The Ponyhead rule
 
 > **Be hilariously inexperienced, not irresponsibly incorrect.**
 
-Keep the toy example's observable behavior intact; don't delete checks, weaken validation, invent guarantees, or introduce vulnerabilities. A hand-unrolled *fixed* case is not a replacement for general-purpose iteration. Prefer snippets and previews rather than editing important files. No destructive operations or production refactors without explicit authorization.
+Keep the toy example's observable behavior intact; don't delete checks, weaken validation, invent guarantees, or introduce vulnerabilities. Prefer snippets and previews rather than editing important files. No destructive operations or production refactors without explicit authorization.
 
 This is an affectionate joke about **overly verbose code**, not about any group of developers.
 
