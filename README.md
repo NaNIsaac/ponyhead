@@ -138,8 +138,8 @@ inputs the tests check (Python 3.14.7 on Windows AMD64):
 | `reverse` | 1 → 4 | 173 → 302 ns | 1.7× |
 | **all** | **10 → 45** | | |
 
-Ponyhead writes 4.5× the lines and is *not* reliably slower: `day_name` no longer builds a list on
-every call and `bigger` skips a function call, so a few cases get faster. Reproduce with
+Ponyhead writes 4.5× the lines and is *not* reliably slower: `bigger` skips the call to `max()` and
+comes out ahead, and the 14-line `day_name` ties because it never builds the list. Reproduce with
 `python scripts/bench.py`; numbers move a little between runs and machines.
 
 ### Benchmark results (marketing edition)
