@@ -116,10 +116,33 @@ This is an affectionate joke about **overly verbose code**, not about any group 
 
 ```bash
 python -m unittest discover -s tests   # fixed-example equivalence check
+python scripts/bench.py                # lines and time per call for every pair
 uv run scripts/build_demo.py           # regenerate the demo GIF
 ```
 
 ## Benchmark results
+
+We did eventually run it. Every pair in [`examples/cases.py`](examples/cases.py), timed on the same
+inputs the tests check (Python 3.14.7 on Windows AMD64):
+
+| Case | Lines | Time per call | Ponyhead ÷ normal |
+| --- | --- | --- | --- |
+| `is_even` | 1 → 1 | 96 → 186 ns | 1.9× |
+| `is_positive` | 1 → 5 | 72 → 89 ns | 1.2× |
+| `twelve` | 1 → 1 | 133 → 133 ns | 1.0× |
+| `day_name` | 1 → 14 | 143 → 139 ns | 1.0× |
+| `swap` | 2 → 5 | 83 → 98 ns | 1.2× |
+| `bigger` | 1 → 6 | 101 → 82 ns | 0.8× |
+| `absolute` | 1 → 5 | 81 → 91 ns | 1.1× |
+| `is_empty` | 1 → 4 | 88 → 126 ns | 1.4× |
+| `reverse` | 1 → 4 | 173 → 302 ns | 1.7× |
+| **all** | **10 → 45** | | |
+
+Ponyhead writes 4.5× the lines and is *not* reliably slower: `day_name` no longer builds a list on
+every call and `bigger` skips a function call, so a few cases get faster. Reproduce with
+`python scripts/bench.py`; numbers move a little between runs and machines.
+
+### Benchmark results (marketing edition)
 
 | Metric | Result |
 | --- | --- |

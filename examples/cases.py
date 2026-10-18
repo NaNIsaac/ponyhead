@@ -109,3 +109,19 @@ def reverse_ponyhead(s):
     for ch in s:
         result = ch + result
     return result
+
+
+NUMBERS = range(-1000, 1001)
+SMALL = range(-20, 21)
+# Inputs each pair is checked on (tests) and timed on (scripts/bench.py).
+INPUTS = {
+    "is_even": [(n,) for n in NUMBERS],
+    "is_positive": [(n,) for n in NUMBERS],
+    "twelve": [()],
+    "day_name": [(i,) for i in range(7)],
+    "swap": [(a, b) for a in SMALL for b in SMALL],
+    "bigger": [(a, b) for a in SMALL for b in SMALL],
+    "absolute": [(n,) for n in NUMBERS],
+    "is_empty": [([],), ([0],), ("",), ("x",), ((),)],
+    "reverse": [("",), ("a",), ("hello",), ("가나다",)],
+}
