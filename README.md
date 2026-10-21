@@ -79,10 +79,18 @@ Install it with the Skills CLI:
 npx skills add NaNIsaac/ponyhead --skill ponyhead
 ```
 
-Or install specifically for Claude Code in your current project:
+Or install specifically for Claude Code in your current project (`-y` skips the prompts):
 
+<!-- test -->
 ```bash
-npx skills add NaNIsaac/ponyhead --skill ponyhead -a claude-code
+npx skills add NaNIsaac/ponyhead --skill ponyhead -a claude-code -y
+```
+
+Check that the skill file is in place. This exits non-zero if it is missing:
+
+<!-- test -->
+```bash
+uv run --no-project python -c "from pathlib import Path; assert Path('.claude/skills/ponyhead/SKILL.md').is_file()"
 ```
 
 **Manual install:** Copy [`skills/ponyhead/SKILL.md`](skills/ponyhead/SKILL.md) to `.claude/skills/ponyhead/SKILL.md` in your Claude Code project, or to the corresponding skills directory in another compatible agent.
